@@ -1,1 +1,118 @@
+# Pediatric AML DNA methylation: NMF-derived subgroup analysis and interactive UMAP exploration
+
+![Status](https://img.shields.io/badge/analysis-ongoing-informational) ![Language](https://img.shields.io/badge/language-R-blue)
+
+**Code and methodological documentation for exploratory methylation-based stratification of pediatric acute myeloid leukemia (AML).** The project uses nonnegative matrix factorization (NMF) to represent patient methylation profiles, evaluates associations with clinical and molecular annotations, and visualizes patient relationships in a two-dimensional UMAP embedding.
+
+> **Scope:** This repository is being populated in stages. At present, the public release focuses on **Script 16 (H-matrix UMAP)** and the **Section 13/14 explorer exporters**. Earlier NMF, survival, and lesion-association scripts will be added only after a separate reproducibility and data-disclosure review. Links to figures or an interactive site should be activated only after their files have been reviewed and uploaded.
+
+## Quick navigation
+
+| Resource | Description | Link |
+|---|---|---|
+| Analysis code | Public-facing R scripts, with configurable file paths | [scripts/](scripts/) |
+| Analysis decisions | Rationale, alternatives, and methodological cautions | [methods/ANALYSIS_DECISIONS.md](methods/ANALYSIS_DECISIONS.md) |
+| UMAP methods | Detailed reproducible description of Script 16 | [methods/UMAP_METHODS.md](methods/UMAP_METHODS.md) |
+| Supporting figures | Figure naming conventions, legends, and evidence trail | [figures/README.md](figures/README.md) |
+| Supplementary inventory | Track figure/table sources and publication status | [supplementary/FIGURE_MANIFEST.md](supplementary/FIGURE_MANIFEST.md) |
+| Interactive explorer | Public GitHub Pages page (once published) | [Explorer landing page](docs/index.html) |
+
+## Study overview
+
+The analysis was developed using a **combined-sex pediatric AML cohort (854 patients)** and a DNA methylation beta matrix of approximately **729,146 CpGs** after quality control. The existing fitted NMF decomposition uses **23 components**. The H matrix contains a 23-component profile for each patient and supports exploration beyond the discrete group assigned from the largest H score. These are descriptions of the analyzed cohort and stored model, **not a new independent validation dataset**.
+
+### Main questions
+
+1. How do NMF-derived patient profiles relate to one another in a lower-dimensional embedding?
+2. Are methylation-defined groups aligned with patient sex, clinical risk, or molecular/cytogenetic lesions?
+3. Do low-confidence NMF assignments (small margins between leading component weights) lie in overlapping regions of the embedding?
+4. Do the raw and patient-sum-normalized H representations suggest similar qualitative organization?
+
+**UMAP is exploratory.** The display is not evidence by itself for discrete disease subtypes, differential survival, or statistical significance. Inferential results belong in the corresponding analysis scripts and should be reported separately.
+
+## Analysis workflow
+
+```text
+Input CpG x patient methylation matrix (prior analysis)
+        |
+        v
+NMF factorization: V ~ W H (existing 23-component model)
+        |
+        v
+H: 23 components x 854 patients
+        |
+        +--> Patient-by-component raw H --> Euclidean UMAP
+        |
+        +--> Patient-sum-normalized H --> Cosine UMAP
+                    |
+                    v
+      2D patient coordinates (854 rows per embedding)
+                    |
+                    v
+        Merge clinical/molecular annotations by USI
+                    |
+          +---------+--------------------+
+          |                              |
+          v                              v
+Publication-quality static figures   Private and reviewed public explorer
+(PDF / PNG; local outputs)           (interactive HTML)
+```
+
+## Software and reproducibility
+
+The public scripts use R with `uwot`, `ggplot2`, `plotly`, and other packages listed at the beginning of each script. The original run saved an `R_Session_Info.txt` file locally; confirm and transcribe the **actual package versions** before final manuscript submission rather than inferring them from this README.
+
+To run the public source code on data you are authorized to use, set `NMF_PROJECT_DIR` to a **private location outside the Git repository** and supply the expected local H, assignments, and annotation files. See the [configuration instructions](methods/UMAP_METHODS.md#running-script-16). **Do not commit local outputs, data, logs, or `.Renviron`.**
+
+## Current scripts
+
+| Script | Purpose | Dependency |
+|---|---|---|
+| [`16_NMF_H_UMAP_Interactive_Exploration_PUBLIC.R`](scripts/16_NMF_H_UMAP_Interactive_Exploration_PUBLIC.R) | Prepares raw/normalized H, fits UMAP, exports QC and figures | Existing NMF H and clinical input files |
+| [`16_Section_13_Unified_Explorer_PUBLIC_APPEND_ONLY.R`](scripts/16_Section_13_Unified_Explorer_PUBLIC_APPEND_ONLY.R) | Append-only unified explorer code; export disabled by default | Original Script 16 runtime objects |
+| [`16_Section_14_Public_GitHub_UMAP_Exporter.R`](scripts/16_Section_14_Public_GitHub_UMAP_Exporter.R) | Standalone public-export workflow using saved Script 16 embeddings; removes original USI and survival variables from its selected HTML fields | Existing `Script_16_Complete_Analysis_Objects.rds`, plus source-specific release approval |
+
+These two explorer approaches serve different integration needs; **the standalone Section 14 does not require appending Section 13 or rerunning NMF/UMAP**. Do not execute the two exporters merely to create redundant published artifacts.
+
+## Key methodological decisions
+
+| Decision | Implementation / rationale |
+|---|---|
+| Keep all components | All 23 H rows retained, including components that are not the dominant assignment for any patient |
+| Use H, not the full methylation matrix | Inspect the 23-component NMF representation while retaining each patient's full weight profile |
+| Use two representations | Raw H and per-patient sum-normalized H, analyzed separately |
+| Distances | Euclidean on raw H, cosine on normalized H in the current Script 16 configuration |
+| Reproducibility | Seed 190; one UMAP thread in the current configuration |
+| Primary UMAP | `n_neighbors = 30`, `min_dist = 0.30`, `spread = 1`, `n_epochs = 500` |
+| Sensitivity | Neighborhood sizes 15/30/50, min_dist 0.1/0.3/0.5; neighborhood-overlap QC (k=15) |
+| Missing lesion calls | Unknown remains separate from lesion-absent |
+| Visualization covariates | Sex, NMF group, risk, molecular/cytogenetic characteristics, and assignment Margin |
+| Survival | Not used to calculate UMAP; excluded from the public Section 14 explorer |
+
+See [Analysis Decisions](methods/ANALYSIS_DECISIONS.md) for interpretation and limitations. This table documents configured methods; it is **not a table of scientific results**.
+
+## Supporting figures
+
+Publication-ready supporting figures should be placed in [`figures/`](figures/) after checking that they are appropriate for public distribution. We recommend exporting **both PDF and high-resolution PNG** versions; the PNG can be previewed in Markdown while the PDF can be downloaded for high-quality use. Each figure should have a consistent ID such as `FigS01`, an explanatory caption, a description of the H representation and covariate, and a pointer to the exact script/parameters used.
+
+Use [the figure guide](figures/README.md) and [the supplementary manifest](supplementary/FIGURE_MANIFEST.md) as the authoritative register. **Figure placeholders do not imply that a corresponding plot has been validated or published.**
+
+## Data availability and responsible sharing
+
+The underlying genomic and clinical data were obtained from external research repositories. **Availability for download does not automatically grant redistribution rights for all individual-level data or derived HTML visualizations**; access tiers and source-specific data-use terms must be checked. This repository provides source code and methodological documentation, not raw methylation matrices, fitted patient-level H data, clinical input tables, local run logs, or unrestricted patient-level exports.
+
+A public interactive HTML file can expose all embedded point coordinates and selected annotations. Replacing `USI` with display IDs and dropping survival fields reduces disclosure but **does not establish anonymization**. Any published explorer must first be reviewed against the exact input datasets' redistribution conditions and relevant institutional procedures. If approved, place only the reviewed `Unified_UMAP_Explorer_PUBLIC.html` in `docs/`.
+
+**Data accessions and study citations:** [TO COMPLETE after verification: dataset accession(s), repository URLs, publications, and access tiers].
+
+## Citation and contact
+
+- **Manuscript citation:** [TO ADD WHEN AVAILABLE]
+- **Code version / archived release DOI:** [TO ADD WHEN AVAILABLE]
+- **Maintainer/contact:** [OPTIONAL — enter a public professional contact if desired]
+- **License:** [DECIDE BEFORE ADDING A LICENSE FILE; absence of a license does not automatically allow code reuse]
+
+## Repository status
+
+This repository is a documented analysis archive under active development, not yet a fully executable end-to-end NMF reproduction. The current public scripts assume existing NMF model outputs. Additional workflow sections and figure legends will be incorporated as they are reviewed.
 
