@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pediatric AML | NMF UMAP Explorer</title>
+<meta name="description" content="Methodological documentation and reviewed interactive NMF UMAP explorer for pediatric AML.">
+<style>
+:root{color-scheme:light;--ink:#142b42;--muted:#4a6071;--blue:#117e9c;--line:#dce5ed}
+*{box-sizing:border-box}body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#f7f9fb}
+header{background:linear-gradient(125deg,#12273e,#194e65);color:white;padding:80px max(22px,calc((100vw - 950px)/2)) 70px}
+main{max-width:950px;margin:-28px auto 80px;padding:0 20px}.eyebrow{font-size:.8rem;letter-spacing:.18em;color:#a9d0dd;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.2;max-width:760px}header p{color:#d5e2ec;max-width:750px;font-size:1.1rem}
+.card{background:white;border:1px solid var(--line);border-radius:14px;padding:28px;margin:16px 0;box-shadow:0 4px 18px #16304b0d}.card h2{margin:0 0 8px;font-size:1.4rem}.small{color:var(--muted);font-size:.95rem}
+.btn{display:inline-block;background:var(--blue);color:white;padding:12px 19px;border-radius:8px;text-decoration:none;font-weight:700}.btn:hover{background:#075e76}.disabled{display:inline-block;background:#e9eff3;color:#425464;padding:12px 19px;border-radius:8px;font-weight:650}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:650px){.grid{grid-template-columns:1fr}}a{color:#086d91}footer{max-width:950px;margin:auto;padding:20px;color:#536777;font-size:.9rem}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Pediatric AML · DNA methylation · NMF</div><h1>Exploring methylation-derived patient structure</h1><p>Scientific documentation and a planned public interactive UMAP for the 23-component NMF representation of pediatric AML methylation profiles.</p></header>
+<main>
+<section class="card"><h2>Interactive UMAP explorer</h2><p>Toggle between raw and normalized NMF H representations; recolor patients by clinical and molecular features; and highlight NMF groups.</p><p class="small"><strong>Publication status:</strong> Public interactive data export is pending review of source-specific redistribution permissions. The explorer is not linked here until that review is complete.</p><span class="disabled">Explorer pending release</span>
+<!-- AFTER approval and upload of docs/Unified_UMAP_Explorer_PUBLIC.html, replace the disabled span above with:
+<a class="btn" href="Unified_UMAP_Explorer_PUBLIC.html">Launch interactive UMAP →</a>
+--></section>
+<div class="grid"><section class="card"><h2>Scientific methods</h2><p>Analysis design, H-matrix normalization, UMAP parameters, and caveats.</p><p class="small">See <code>methods/UMAP_METHODS.md</code> in the GitHub repository.</p></section><section class="card"><h2>Supporting figures</h2><p>Curated static figures with stable IDs, captions, and cross-references to their generating scripts.</p><p class="small">See <code>figures/README.md</code> in the GitHub repository.</p></section></div>
+<section class="card"><h2>Interpretation</h2><p>UMAP is an exploratory projection of the full 23-component NMF H representation. The embedding is not a test of clinically meaningful subtype separation or survival association. Covariate colors are annotations applied after embedding.</p></section>
+</main><footer>Analysis documentation · Pediatric AML NMF project · Public website for reviewed materials only</footer>
+</body></html>
