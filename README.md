@@ -4,14 +4,14 @@
 
 **Code and methodological documentation for exploratory methylation-based stratification of pediatric acute myeloid leukemia (AML).** The project uses nonnegative matrix factorization (NMF) to represent patient methylation profiles, evaluates associations with clinical and molecular annotations, and visualizes patient relationships in a two-dimensional UMAP embedding.
 
-> **Scope:** This repository is being populated in stages. At present, the public release focuses on **Script 16 (H-matrix UMAP)** and the **Section 13/14 explorer exporters**. Earlier NMF, survival, and lesion-association scripts will be added only after a separate reproducibility and data-disclosure review. Links to figures or an interactive site should be activated only after their files have been reviewed and uploaded.
+> **Scope:** This repository is being populated in stages. At present, the public release focuses on **Script 16 (H-matrix UMAP)** and the **Section 13/14 explorer exporters**. Earlier NMF, survival, and lesion-association scripts will be added only after a separate reproducibility and data-disclosure review. 
 
 ## Quick navigation
 
 | Resource | Description | Link |
 |---|---|---|
 | Analysis code | Public-facing R scripts, with configurable file paths | [Scripts/](Scripts/) |
-| Analysis decisions | Rationale, alternatives, and methodological cautions | [Methods/ANALYSIS_DECISIONS.md](<ethods/ANALYSIS_DECISIONS.md) |
+| Analysis decisions | Rationale, alternatives, and methodological cautions | [Methods/ANALYSIS_DECISIONS.md](<Methods/ANALYSIS_DECISIONS.md) |
 | UMAP methods | Detailed reproducible description of Script 16 | [Methods/UMAP_METHODS.md](Methods/UMAP_METHODS.md) |
 | Supporting figures | Figure naming conventions, legends, and evidence trail | [Figures/README.md](Figures/README.md) |
 | Supplementary inventory | Track figure/table sources and publication status | [Supplement/FIGURE_MANIFEST.md](Supplement/FIGURE_MANIFEST.md) |
@@ -20,13 +20,6 @@
 ## Study overview
 
 The analysis was developed using a **combined-sex pediatric AML cohort (854 patients)** and a DNA methylation beta matrix of approximately **729,146 CpGs** after quality control. The existing fitted NMF decomposition uses **23 components**. The H matrix contains a 23-component profile for each patient and supports exploration beyond the discrete group assigned from the largest H score. These are descriptions of the analyzed cohort and stored model, **not a new independent validation dataset**.
-
-### Main questions
-
-1. How do NMF-derived patient profiles relate to one another in a lower-dimensional embedding?
-2. Are methylation-defined groups aligned with patient sex, clinical risk, or molecular/cytogenetic lesions?
-3. Do low-confidence NMF assignments (small margins between leading component weights) lie in overlapping regions of the embedding?
-4. Do the raw and patient-sum-normalized H representations suggest similar qualitative organization?
 
 **UMAP is exploratory.** The display is not evidence by itself for discrete disease subtypes, differential survival, or statistical significance. Inferential results belong in the corresponding analysis scripts and should be reported separately.
 
@@ -60,9 +53,7 @@ Publication-quality static figures   Private and reviewed public explorer
 
 ## Software and reproducibility
 
-The public scripts use R with `uwot`, `ggplot2`, `plotly`, and other packages listed at the beginning of each script. The original run saved an `R_Session_Info.txt` file locally; confirm and transcribe the **actual package versions** before final manuscript submission rather than inferring them from this README.
-
-To run the public source code on data you are authorized to use, set `NMF_PROJECT_DIR` to a **private location outside the Git repository** and supply the expected local H, assignments, and annotation files. See the [configuration instructions](methods/UMAP_METHODS.md#running-script-16). **Do not commit local outputs, data, logs, or `.Renviron`.**
+The public scripts use R with `uwot`, `ggplot2`, `plotly`, and other packages listed at the beginning of each script. The original run saved an `R_Session_Info.txt` file locally.
 
 ## Current scripts
 
@@ -93,15 +84,9 @@ See [Analysis Decisions](methods/ANALYSIS_DECISIONS.md) for interpretation and l
 
 ## Supporting figures
 
-Publication-ready supporting figures should be placed in [`figures/`](figures/) after checking that they are appropriate for public distribution. We recommend exporting **both PDF and high-resolution PNG** versions; the PNG can be previewed in Markdown while the PDF can be downloaded for high-quality use. Each figure should have a consistent ID such as `FigS01`, an explanatory caption, a description of the H representation and covariate, and a pointer to the exact script/parameters used.
+Publication-ready supporting figures are placed in [`figures/`](figures/).  
 
 Use [the figure guide](figures/README.md) and [the supplementary manifest](supplementary/FIGURE_MANIFEST.md) as the authoritative register. **Figure placeholders do not imply that a corresponding plot has been validated or published.**
-
-## Data availability and responsible sharing
-
-The underlying genomic and clinical data were obtained from external research repositories. **Availability for download does not automatically grant redistribution rights for all individual-level data or derived HTML visualizations**; access tiers and source-specific data-use terms must be checked. This repository provides source code and methodological documentation, not raw methylation matrices, fitted patient-level H data, clinical input tables, local run logs, or unrestricted patient-level exports.
-
-A public interactive HTML file can expose all embedded point coordinates and selected annotations. Replacing `USI` with display IDs and dropping survival fields reduces disclosure but **does not establish anonymization**. Any published explorer must first be reviewed against the exact input datasets' redistribution conditions and relevant institutional procedures. If approved, place only the reviewed `Unified_UMAP_Explorer_PUBLIC.html` in `docs/`.
 
 **Data accessions and study citations:** [TO COMPLETE after verification: dataset accession(s), repository URLs, publications, and access tiers].
 
