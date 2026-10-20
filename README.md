@@ -86,7 +86,16 @@ Publication-ready supporting figures are placed in [`figures/`](figures/).
 
 Use [the figure guide](figures/README.md) and [the supplementary manifest](supplementary/FIGURE_MANIFEST.md) as the authoritative register. **Figure placeholders do not imply that a corresponding plot has been validated or published.**
 
-**Data accessions and study citations:** [TO COMPLETE after verification: dataset accession(s), repository URLs, publications, and access tiers].
+**Data accessions and study citations:** 
+Pollard JA, Alonzo TA, Gerbing R, Brown P, Fox E, Choi J, Fisher B, Hirsch B, Kahwash S, Getz K, Levine J, Brodersen LE, Loken MR, Raimondi S, Tarlock K, Wood A, Sung L, Kolb EA, Gamis A, Meshinchi S, Aplenc R. Sorafenib in Combination With Standard Chemotherapy for Children With High Allelic Ratio FLT3/ITD+ Acute Myeloid Leukemia: A Report From the Children's Oncology Group Protocol AAML1031. J Clin Oncol. 2022 Jun 20;40(18):2023-2035. doi: 10.1200/JCO.21.01612. Epub 2022 Mar 29. PMID: 35349331; PMCID: PMC9197362.
+	
+Bertrums EJM, Smith JL, Harmon L, Ries RE et al. Comprehensive molecular and clinical characterization of NUP98 fusions in pediatric acute myeloid leukemia. Haematologica 2023 Aug 1;108(8):2044-2058. PMID: 36815378
+
+Marchi F, Shastri VM, Marrero RJ, Nguyen NHK et al. Epigenomic diagnosis and prognosis of Acute Myeloid Leukemia. Nat Commun 2025 Jul 29;16(1):6961. PMID: 40730747
+
+Choudhury SR, Kaushal A, Biswas P, Padilla C et al. Transcriptional rewiring by enhancer methylation in CBFA2T3-GLIS2-driven pediatric acute megakaryoblastic leukemia. Genes Dis 2026 Jan;13(1):101843. PMID: 41141393
+
+DeBruine ZJ, Melcher K, Triche TJ (2021). "High-performance non-negative matrix factorization for large single-cell data." BioRXiv. doi:10.1101/2021.09.01.458620.
 
 ## Citation and contact
 
