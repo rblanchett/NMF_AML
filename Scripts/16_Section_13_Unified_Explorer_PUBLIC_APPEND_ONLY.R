@@ -24,14 +24,6 @@
 #   should not be compared as if on a shared coordinate system. The explorer
 #   is for descriptive visualization, not statistical hypothesis testing.
 #
-# PRIVACY / PUBLICATION
-#   This public SOURCE CODE is separate from patient-level HTML export.
-#   Public HTML generation is deliberately disabled by default.
-#   Every field serialized to HTML may be extracted by a visitor, even if
-#   hidden in controls/tooltips. The explorer excludes USI by design and
-#   generates display-only Public_ID values, BUT pseudonyms do not ensure
-#   anonymity. Review covariates and redistribution permissions before posting
-#   to a PUBLIC GitHub repository. Do not publish raw clinical CSV or RDS.
 # ==============================================================================
 
 # ==============================================================================
@@ -39,9 +31,6 @@
 # ==============================================================================
 EXPLORER_CONFIG <- list(
   ENABLED = FALSE,  # Keep FALSE until public dataset/derived-data release is approved.
-  # Disabled by default: SOURCE CODE is publishable, patient-level HTML is not.
-  # Approval requires both dataset redistribution authorization and a review
-  # of point-level UMAP coordinates, tooltip values, and small categories.
   PUBLIC_RELEASE_APPROVED = FALSE,
   # EXPLICIT allowlist only; do not export all CONFIG$PLOT_COVARIATES.
   PUBLIC_COLOR_COVARIATES = character(0),
