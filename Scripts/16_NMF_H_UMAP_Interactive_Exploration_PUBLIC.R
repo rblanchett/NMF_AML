@@ -2,11 +2,9 @@
 # This file is safe to share as SOURCE CODE after project review. It does NOT
 # include clinical records, patient IDs, methylation arrays, or fitted NMF data.
 # The expected input filenames are neutral examples; rename local files or edit
-# the CONFIG paths to match authorized inputs. Runtime output is patient-level
-# and must remain outside a public GitHub repository.
+# the CONFIG paths to match authorized inputs. Runtime output is patient-level.
 # The NMF and UMAP calculations are unchanged from the original analysis script.
 # The chosen clinical covariates reflect a configurable research example.
-# NOTE: Do not paste runtime logs or output files into public GitHub.
 
 #!/usr/bin/env Rscript
 # ==============================================================================
@@ -37,7 +35,6 @@
 #
 # EXECUTION:
 #   Rscript 16_NMF_H_UMAP_Interactive_Exploration.R
-#   OR source() in a fresh R session.
 #   Adjust SECTION 01 below to customize paths, covariates and plot aesthetics.
 # ==============================================================================
 
@@ -119,7 +116,7 @@ CONFIG <- list(
   # receive a consistent discrete color automatically.
   CATEGORICAL_PALETTES = list(
     Sex = c(Male = "#2B6CB0", Female = "#DD6B98", Unknown = "#999999"),
-    Risk.group.classification..by.protocol.1031 = c(Low = "#239A3B", Standard = "#F2C94C",
+    Risk.group.classification..by.protocol.1031 = c(Low = "#239A3B",
                          High = "#D33F49", Unknown = "#999999")
   ),
   LESION_COLORS = c(Present = "#D62728", Absent = "#8C8C8C",
@@ -161,8 +158,8 @@ CONFIG <- list(
 # ==============================================================================
 # SECTION 02 — PATHS, PACKAGE VALIDATION AND LOGGING
 # ==============================================================================
-# Console and log are both written directly, eliminating fragile nested sink()
-# behavior. An error handler records the failure and session information.
+# Console and log are both written directly
+# An error handler records the failure and session information.
 resolve_path <- function(path) {
   if (length(path) != 1L || is.na(path) || !nzchar(path)) stop("Invalid path")
   if (grepl("^([A-Za-z]:[/\\\\]|/|~)", path)) return(path.expand(path))
@@ -463,8 +460,7 @@ make_plot_field <- function(data, variable) {
 # ==============================================================================
 # UMAP is run on patient × component matrices. With cosine metric, relative
 # profiles are compared by direction; with Euclidean, distances depend on H
-# magnitude. We do not include clinical annotations in the dimensionality
-# reduction, preventing circular coloring by labels used to fit the geometry.
+# magnitude. 
 fit_umap <- function(X, metric, n_neighbors, min_dist, seed, label) {
   if (n_neighbors >= nrow(X)) stop("n_neighbors must be less than patient count")
   log_line("UMAP ", label, ": n_neighbors=", n_neighbors,
