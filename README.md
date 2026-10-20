@@ -4,7 +4,7 @@
 
 **Code and methodological documentation for exploratory methylation-based stratification of pediatric acute myeloid leukemia (AML).** The project uses nonnegative matrix factorization (NMF) to represent patient methylation profiles, evaluates associations with clinical and molecular annotations, and visualizes patient relationships in a two-dimensional UMAP embedding.
 
-> **Scope:** This repository is being populated in stages. At present, the public release focuses on **Script 16 (H-matrix UMAP)** and the **Section 13/14 explorer exporters**. Earlier NMF, survival, and lesion-association scripts will be added only after a separate reproducibility and data-disclosure review. 
+> **Scope:** This repository is being populated in stages. At present, the public release focuses on **Script 16 (H-matrix UMAP)** and the **Section 13/14 explorer exporters**. Earlier NMF, survival, and lesion-association scripts will be added at a later point.  
 
 ## Quick navigation
 
@@ -20,8 +20,6 @@
 ## Study overview
 
 The analysis was developed using a **combined-sex pediatric AML cohort (854 patients)** and a DNA methylation beta matrix of approximately **729,146 CpGs** after quality control. The existing fitted NMF decomposition uses **23 components**. The H matrix contains a 23-component profile for each patient and supports exploration beyond the discrete group assigned from the largest H score. These are descriptions of the analyzed cohort and stored model, **not a new independent validation dataset**.
-
-**UMAP is exploratory.** The display is not evidence by itself for discrete disease subtypes, differential survival, or statistical significance. Inferential results belong in the corresponding analysis scripts and should be reported separately.
 
 ## Analysis workflow
 
