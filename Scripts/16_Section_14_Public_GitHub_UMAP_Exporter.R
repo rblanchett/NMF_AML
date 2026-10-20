@@ -18,9 +18,7 @@
 # IMPORTANT PRIVACY / DATA-USE LIMITATION
 #   Display ID replacement is PSEUDONYMIZATION, not complete anonymization.
 #   Patient-specific UMAP positions and combinations of rare molecular or
-#   clinical annotations remain recoverable from the HTML source. Ensure the
-#   exact source datasets and DERIVED ROW-LEVEL OUTPUT are permitted for
-#   unrestricted redistribution before publishing. If not, do not publish.
+#   clinical annotations remain recoverable from the HTML source.
 #
 # EXPECTED INPUT
 #   Script_16_Complete_Analysis_Objects.rds (created by original Script 16)
@@ -28,9 +26,9 @@
 #   USI, UMAP1, UMAP2, NMF_Group, and covariate columns.
 #
 # EXPECTED OUTPUTS
-#   Unified_UMAP_Explorer_PUBLIC.html       [review then put in docs/]
-#   Public_Explorer_Field_Audit_PRIVATE.csv [do NOT upload]
-#   Public_Explorer_Export_Log_PRIVATE.txt  [do NOT upload]
+#   Unified_UMAP_Explorer_PUBLIC.html       
+#   Public_Explorer_Field_Audit_PRIVATE.csv 
+#   Public_Explorer_Export_Log_PRIVATE.txt  
 #
 # DEPENDENCIES: plotly, htmlwidgets, jsonlite; Pandoc for self-contained HTML
 # ============================================================================== 
@@ -82,7 +80,7 @@ EXPLORER_CONFIG <- list(
   CATEGORICAL_PALETTES = list(
     Sex = c(Male="#2B6CB0", Female="#DD6B98", Unknown="#999999"),
     Risk.group.classification..by.protocol.1031 = c(
-      Low="#239A3B", Standard="#F2C94C", High="#D33F49",
+      Low="#239A3B", High="#D33F49",
       Unknown="#999999")
   ),
   LESION_COLORS = c(Present="#D62728", Absent="#8C8C8C", Unknown="#D8D8D8"),
@@ -111,8 +109,6 @@ CONFIG <- list(
 # ==============================================================================
 # SECTION 14.02 — SAFETY: PATHS, ALLOWLIST, OUTCOME/IDENTIFIER EXCLUSION
 # ==============================================================================
-# This prohibits several common time/event/survival/identifier field patterns.
-# It is deliberately strict, but not a replacement for human review.
 BLOCKED_FIELD_REGEX <- paste0(
   "(^|[._])(",
   "usi|patient.?id|sample.?id|subject.?id|case.?id|barcode|",
