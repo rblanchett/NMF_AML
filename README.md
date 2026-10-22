@@ -15,7 +15,7 @@
 | UMAP methods | Detailed reproducible description of Script 16 | [UMAP Methodology](Methods/UMAP_METHODS.md) |
 | Covariate Analysis Methods | Description of the methods for determining over- and underrepresentation among NMF groups | [Covariate Statistics Methodology](Methods/COVARIATE_METHODS.md) |
 | NMF Significant Characteristics Guide | Track figure/table sources and publication status | [NMF_Significant_Characteristics_Guide](Supplement/NMF_Significant_Characteristics_Guide.md) |
-| Interactive explorer | Public GitHub Pages page | [Interactive UMAP](docs/index.html) |
+| Interactive explorer | Public GitHub Pages page | [Interactive UMAP]([docs/index.html](https://rblanchett.github.io/Pediatric_AML_NMF/)) |
 
 ## Study overview
 
