@@ -10,8 +10,8 @@
 
 | Resource | Description | Link |
 |---|---|---|
-| Analysis code | Public-facing R scripts, with configurable file paths | [Scripts/](Scripts/) |
-| Analysis decisions | Rationale, alternatives, and methodological cautions | [Analysis Decions Methodology](Methods/ANALYSIS_DECISIONS.md) |
+| Analysis code | Public-facing R scripts, with configurable file paths | [Scripts](Scripts/) |
+| Analysis decisions | Rationale, alternatives, and methodological cautions | [Analysis Decisions Methodology](Methods/ANALYSIS_DECISIONS.md) |
 | UMAP methods | Detailed reproducible description of Script 16 | [UMAP Methodology](Methods/UMAP_METHODS.md) |
 | Covariate Analysis Methods | Description of the methods for determining over- and underrepresentation among NMF groups | [Covariate Statistics Methodology](Methods/COVARIATE_METHODS.md) |
 | NMF Significant Characteristics Guide | Track figure/table sources and publication status | [NMF_Significant_Characteristics_Guide](Supplement/NMF_Significant_Characteristics_Guide.md) |
