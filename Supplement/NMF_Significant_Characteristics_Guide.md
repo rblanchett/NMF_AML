@@ -8,7 +8,7 @@ Categorical clinical, molecular, and cytogenetic variables were compared between
 
 ### Interpretation of the category columns
 
-The underlying **variable-level** omnibus comparison is significant. The “higher in group” and “lower in group” categories below are categories reported in the source table as having relatively higher or lower prevalence in the target group; they should **not be interpreted as independently FDR-significant category-specific tests** without additional testing. Percentages are calculated relative to the target group or the combined comparison groups, as reported in the supplied results. For `Unknown`, `pending`, `#N/A`, or `#NAME?` categories, interpret as source-data labels or artifacts pending verification, not biological states.
+The underlying **variable-level** omnibus comparison is significant. The “higher in group” and “lower in group” categories below are categories reported in the source table as having relatively higher or lower prevalence in the target group; they should **not be interpreted as independently FDR-significant category-specific tests** without additional testing. Percentages are calculated relative to the target group or the combined comparison groups, as reported in the supplied results. 
 
 ## Group-centric overview
 
@@ -28,6 +28,64 @@ The underlying **variable-level** omnibus comparison is significant. The “high
 | **nmf20** | 44 | 9 | OtherAML (`Cytogenetic.Category.1`); Other (`Primary.Cytogenetic.Code`); AML with myelodysplasia-related changes (`FAB_or_WHO.Classification`); M1 (`FAB`) |
 | **nmf21** | 31 | 8 | Yes (`CEBPA.mutation.`); CEBPA (`SNVs`); Provisional entity: AML with mutated CEBPA (`FAB_or_WHO.Classification`); CEBPA.mutation. (`Mutations.Category`) |
 | **nmf22** | 55 | 6 | Yes (`NPM.mutation.`); NPM1 (`SNVs`); Normal Karyotype (`Cytogenetic.Category.1`); Provisional entity: AML with mutated NPM1 (`FAB_or_WHO.Classification`) |
+
+## Significant NMF-associated characteristics — reverse lookup
+
+This table reorganizes the **107 BH-FDR-significant NMF group–covariate comparisons across 14 NMF groups** by covariate. Each entry lists the recorded category and NMF group(s) in which it was relatively more common (**overrepresented**) or less common (**underrepresented**) compared with the remaining patients. **The BH-adjusted significance applies to the overall covariate comparison**, not to a separate test of each named category.
+
+| Covariate | Overrepresented category → NMF group(s) | Underrepresented category → NMF group(s) |
+|---|---|---|
+| `Additional.Fusions.CNV` | **AMBRA1-MLLT10; MLLT10-AMBRA1; ABTB2-KMT2A** (nmf10) | **#N/A** (nmf10) |
+| `AgeGroup` | **AYA** (nmf7, nmf22); **Child** (nmf8); **Infant** (nmf11, nmf17) | **Child** (nmf11, nmf17); **Infant** (nmf7, nmf8, nmf22) |
+| `c.Kit.Mutation.Exon.17` | **Yes** (nmf8) | **No** (nmf8) |
+| `c.Kit.Mutation.Exon.8` | **Yes** (nmf6, nmf8) | **No** (nmf6, nmf8) |
+| `CBL.Mutation` | **Del_exons_8_9** (nmf6) | **Unknown** (nmf6) |
+| `CEBPA.Double.Single.Allelic.Status` | **Double Mutant** (nmf21) | **None** (nmf21) |
+| `CEBPA.mutation.` | **Yes** (nmf21) | **No** (nmf21) |
+| `CSF3R` | **c.2252insC/50** (nmf8) | **Unknown** (nmf8) |
+| `Cyto.Fusion.Molecular.Risk` | **High** (nmf11) | **Low** (nmf11) |
+| `Cytogenetic.Category.1` | **CBFB-MYH11** (nmf6); **KMT2A** (nmf10, nmf14, nmf16); **Normal Karyotype** (nmf7, nmf15, nmf21, nmf22); **OtherAML** (nmf11, nmf17, nmf20); **RUNX1-RUNX1T1** (nmf8) | **CBFB-MYH11** (nmf11); **KMT2A** (nmf6, nmf7, nmf17, nmf21); **Normal Karyotype** (nmf14); **OtherAML** (nmf8, nmf16, nmf22); **RUNX1-RUNX1T1** (nmf10, nmf15, nmf20) |
+| `Cytogenetic.Category.2` | **del5q** (nmf20); **M7** (nmf11, nmf17) | **M7** (nmf20); **OtherAML** (nmf11, nmf17) |
+| `Cytogenetic.Code.Other` | **+19,+21,+der(22)t(1;22)(q21;q13),+8,+10** (nmf17); **~4n [other abnormalities could not be ruled-out]** (nmf20) | **Unknown** (nmf17, nmf20) |
+| `del5q` | **Yes** (nmf20) | **No** (nmf20) |
+| `FAB` | **M1** (nmf20); **M2** (nmf7); **M7** (nmf11, nmf17) | **pending** (nmf7, nmf11, nmf17, nmf20) |
+| `FAB_or_WHO.Classification` | **AML with inv(16)(p13q22) or t(16;16)(p13;q22); CBFB-MYH11** (nmf6); **AML with myelodysplasia-related changes** (nmf20); **AML with t(8;21)(q22;q22); RUNX1-RUNX1T1** (nmf8); **AML with t(9;11)(p22;q23); MLLT3-MLL** (nmf10); **AML, not otherwise categorized:  Acute megakaryoblastic leukemia** (nmf11, nmf17); **AML, not otherwise categorized:  AML with maturation** (nmf7); **Provisional entity: AML with mutated CEBPA** (nmf21); **Provisional entity: AML with mutated NPM1** (nmf15, nmf22) | **AML with inv(16)(p13q22) or t(16;16)(p13;q22); CBFB-MYH11** (nmf11, nmf22); **AML with t(8;21)(q22;q22); RUNX1-RUNX1T1** (nmf7, nmf10, nmf15, nmf17, nmf20); **AML, not otherwise categorized:  Acute monoblastic/acute monocytic leukemia** (nmf6, nmf8, nmf21) |
+| `FLT3.ITD.positive.` | **Yes** (nmf7, nmf15) | **No** (nmf7, nmf15) |
+| `GATA2` | **R330L** (nmf21) | **Unknown** (nmf21) |
+| `inv.16.` | **Yes** (nmf6) | **No** (nmf6) |
+| `M7_AML` | **Yes** (nmf11, nmf17) | **No** (nmf11, nmf17) |
+| `Minus.X` | **Yes** (nmf8) | **No** (nmf8) |
+| `Minus.Y` | **Yes** (nmf8) | **No** (nmf8) |
+| `MLL` | **No** (nmf8); **Yes** (nmf10, nmf16) | **No** (nmf10, nmf16); **Yes** (nmf8) |
+| `MRD.at.end.of.course.1` | **Yes** (nmf7, nmf17) | **No** (nmf7, nmf17) |
+| `MRD.at.end.of.course.2` | **Unknown** (nmf7) | **No** (nmf7) |
+| `Mutations.Category` | **c.Kit.Ex17** (nmf8); **c.Kit.Ex8** (nmf6); **CEBPA.mutation.** (nmf21); **FLT3.ITD** (nmf7); **NPM.mutation.** (nmf15, nmf22) | **FLT3.PM** (nmf15); **OtherAML** (nmf6, nmf7, nmf8, nmf21, nmf22) |
+| `NPM.mutation.` | **Yes** (nmf15, nmf22) | **No** (nmf15, nmf22) |
+| `Primary.CNV` | **CBL_deletion** (nmf6); **del5q** (nmf20); **trisomy21** (nmf11) | **#NAME?** (nmf20); **No.Relevant.CNV** (nmf6, nmf11) |
+| `Primary.Cytogenetic.Code` | **inv(16)** (nmf6); **MLL** (nmf10); **Normal** (nmf7, nmf15, nmf21); **Other** (nmf9, nmf17, nmf20); **t(8;21)** (nmf8) | **MLL** (nmf6, nmf7, nmf21); **Normal** (nmf10); **Other** (nmf8); **t(8;21)** (nmf9, nmf15, nmf17, nmf20) |
+| `Primary.Fusion` | **CBFA2T3-GLIS2** (nmf17); **CBFB-MYH11** (nmf6); **None** (nmf15); **NUP98-KDM5A** (nmf11); **PICALM-MLLT10** (nmf20); **RUNX1-RUNX1T1** (nmf8) | **CBFB-MYH11** (nmf11); **None** (nmf6, nmf8, nmf17); **RUNX1-RUNX1T1** (nmf15, nmf20) |
+| `RAM.phenotype` | **Unknown** (nmf7); **Yes** (nmf17) | **No** (nmf7, nmf17) |
+| `Rare.Fusions` | **CBFA2T3.GLIS2** (nmf17); **DEK.NUP214** (nmf15); **NUP98.KDM5A** (nmf11); **NUP98.NSD1** (nmf7) | **CBFA2T3.GLIS2** (nmf15); **OtherAML** (nmf7, nmf11, nmf17) |
+| `RAS.Gene` | **NRAS** (nmf6) | **None** (nmf6) |
+| `Sex` | **Female** (nmf18); **Male** (nmf14) | **Female** (nmf14); **Male** (nmf18) |
+| `SNVs` | **CEBPA** (nmf21); **FLT3-ITD** (nmf7); **NPM1** (nmf15, nmf22) | **OtherAML** (nmf7, nmf15, nmf21, nmf22) |
+| `t.6.9.` | **Yes** (nmf15) | **No** (nmf15) |
+| `t.8.21.` | **No** (nmf15, nmf17); **Yes** (nmf8) | **No** (nmf8); **Yes** (nmf15, nmf17) |
+| `t.9.11..p22.q23.` | **Yes** (nmf10) | **No** (nmf10) |
+| `Treatment.Arm` | **Arm C** (nmf7) | **Arm B** (nmf7) |
+| `Was.the.patient.diagnosed.with.non.CNS.extramedullary.disease.` | **Yes** (nmf11) | **No** (nmf11) |
+| `WT1.mutation.` | **Yes** (nmf7) | **No** (nmf7) |
+
+**Interpretive notes:**
+- “Overrepresented” and “underrepresented” mean relative to the other NMF groups combined, not necessarily exclusive to a group.
+- The table preserves the original annotation categories. Entries such as `Unknown`, `pending`, `#N/A`, `#NAME?`, `None`, and `OtherAML` may reflect missingness or broad administrative coding rather than specific biology.
+- For binary characteristics, a difference in `Yes` can also produce a complementary difference in `No`; these are not independent findings.
+- Multiple rows may describe the same biological event through overlapping annotation systems (e.g., t(8;21), RUNX1-RUNX1T1, and primary fusion).
+- Percentages, group sizes, test types, and adjusted p-values remain in the detailed NMF-group results table.
+
+### Proposed interactive explorer use
+
+Use the **covariate + specific category** pairs above to populate significant-characteristic dropdowns. For a selected NMF group, display four patient classes: inside group/category present, outside group/category present, inside group/category absent, outside group/category absent. Preserve an explicit **Unknown** class where source annotations are missing or noninterpretable; do not turn unknow
 
 ## Detailed significant-variable summaries
 
