@@ -13,9 +13,9 @@
 | Analysis code | Public-facing R scripts, with configurable file paths | [Scripts/](Scripts/) |
 | Analysis decisions | Rationale, alternatives, and methodological cautions | [Methods/ANALYSIS_DECISIONS.md](Methods/ANALYSIS_DECISIONS.md) |
 | UMAP methods | Detailed reproducible description of Script 16 | [Methods/UMAP_METHODS.md](Methods/UMAP_METHODS.md) |
-| Supporting figures | Figure naming conventions, legends, and evidence trail | [Figures/README.md](Figures/README.md) |
+| Covariate Analysis Methods | Figure naming conventions, legends, and evidence trail | [Methods/COVARIATE_METHODS.md](Methods/COVARIATE_METHODS.md) |
 | Supplementary inventory | Track figure/table sources and publication status | [Supplement/FIGURE_MANIFEST.md](Supplement/FIGURE_MANIFEST.md) |
-| Interactive explorer | Public GitHub Pages page | [Explorer landing page](docs/index.html) |
+| Interactive explorer | Public GitHub Pages page | [Interactive UMAP](docs/index.html) |
 
 ## Study overview
 
