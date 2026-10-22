@@ -13,8 +13,8 @@
 | Analysis code | Public-facing R scripts, with configurable file paths | [Scripts/](Scripts/) |
 | Analysis decisions | Rationale, alternatives, and methodological cautions | [Methods/ANALYSIS_DECISIONS.md](Methods/ANALYSIS_DECISIONS.md) |
 | UMAP methods | Detailed reproducible description of Script 16 | [Methods/UMAP_METHODS.md](Methods/UMAP_METHODS.md) |
-| Covariate Analysis Methods | Figure naming conventions, legends, and evidence trail | [Methods/COVARIATE_METHODS.md](Methods/COVARIATE_METHODS.md) |
-| Supplementary inventory | Track figure/table sources and publication status | [Supplement/FIGURE_MANIFEST.md](Supplement/FIGURE_MANIFEST.md) |
+| Covariate Analysis Methods | Description of the methods for determining over- and underrepresentation among NMF groups | [Methods/COVARIATE_METHODS.md](Methods/COVARIATE_METHODS.md) |
+| NMF Significant Characteristics Guide | Track figure/table sources and publication status | [Supplement/NMF_Significant_Characteristics_Guide.md](Supplement/NMF_Significant_Characteristics_Guide.md) |
 | Interactive explorer | Public GitHub Pages page | [Interactive UMAP](docs/index.html) |
 
 ## Study overview
@@ -57,11 +57,10 @@ The public scripts use R with `uwot`, `ggplot2`, `plotly`, and other packages li
 
 | Script | Purpose | Dependency |
 |---|---|---|
-| [`16_NMF_H_UMAP_Interactive_Exploration_PUBLIC.R`](scripts/16_NMF_H_UMAP_Interactive_Exploration_PUBLIC.R) | Prepares raw/normalized H, fits UMAP, exports QC and figures | Existing NMF H and clinical input files |
-| [`16_Section_13_Unified_Explorer_PUBLIC_APPEND_ONLY.R`](scripts/16_Section_13_Unified_Explorer_PUBLIC_APPEND_ONLY.R) | Append-only unified explorer code; export disabled by default | Original Script 16 runtime objects |
-| [`16_Section_14_Public_GitHub_UMAP_Exporter.R`](scripts/16_Section_14_Public_GitHub_UMAP_Exporter.R) | Standalone public-export workflow using saved Script 16 embeddings; removes original USI and survival variables from its selected HTML fields | Existing `Script_16_Complete_Analysis_Objects.rds`, plus source-specific release approval |
+| [`NMF H UMAP Creation PUBLIC.R`](scripts/16_NMF_H_UMAP_Interactive_Exploration_PUBLIC.R) | Prepares raw/normalized H, fits UMAP, exports QC and figures | Existing NMF H and clinical input files |
+| [`Unified_Explorer_PUBLIC_APPEND_ONLY.R`](scripts/16_Section_16_Characteristic_First_Explorer_RESPONSIVE_GROUP_HIGHLIGHT.R) | Append-only unified explorer code; export disabled by default | Original Script 16 runtime objects |
 
-These two explorer approaches serve different integration needs; **the standalone Section 14 does not require appending Section 13 or rerunning NMF/UMAP**. Do not execute the two exporters merely to create redundant published artifacts.
+These two explorer approaches serve different integration needs
 
 ## Key methodological decisions
 
