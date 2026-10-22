@@ -83,10 +83,6 @@ This table reorganizes the **107 BH-FDR-significant NMF group–covariate compar
 - Multiple rows may describe the same biological event through overlapping annotation systems (e.g., t(8;21), RUNX1-RUNX1T1, and primary fusion).
 - Percentages, group sizes, test types, and adjusted p-values remain in the detailed NMF-group results table.
 
-### Proposed interactive explorer use
-
-Use the **covariate + specific category** pairs above to populate significant-characteristic dropdowns. For a selected NMF group, display four patient classes: inside group/category present, outside group/category present, inside group/category absent, outside group/category absent. Preserve an explicit **Unknown** class where source annotations are missing or noninterpretable; do not turn unknow
-
 ## Detailed significant-variable summaries
 
 Each row lists the **reported** highest-relative-prevalence category in the target group and the reported relatively underrepresented category. `q` is the adjusted p-value for the **entire covariate**. The listed category-specific percentages are descriptive.
@@ -267,13 +263,6 @@ Each row lists the **reported** highest-relative-prevalence category in the targ
 | `Cytogenetic.Category.1` | Normal Karyotype (43.6% vs 21.7%) | OtherAML (18.2% vs 27.9%) | 0.00925 |
 | `FAB_or_WHO.Classification` | Provisional entity: AML with mutated NPM1 (21.8% vs 3.1%) | AML with inv(16)(p13q22) or t(16;16)(p13;q22); CBFB-MYH11 (1.8% vs 9.8%) | 0.014 |
 | `AgeGroup` | AYA (41.8% vs 24.9%) | Infant (7.3% vs 25.8%) | 0.0201 |
-
-## Notes for the interactive UMAP explorer
-
-- Mode 1: preserve the current dropdown showing all configured annotations.
-- Mode 2: select one of the 14 significant NMF groups and one of its significant *variables*. To distinguish presence versus absence, the selected category must be specified and mapped against the actual patient-level annotation values.
-- Mode 3: select a characteristic, then display which NMF groups have a significant **variable-level** association and the category-specific descriptive directions. Group highlighting should not imply independently significant category-level tests.
-- For four-way coloring, classify patients as (inside group, characteristic present), (outside group, present), (inside group, absent), (outside group, absent). Preserve missing/unknown annotations separately; they must not silently count as absent.
 
 ## Source and audit notes
 
